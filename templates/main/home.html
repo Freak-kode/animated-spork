@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock title %}
+{% load static %}
+
+{% block content %}
+
+<h1><p style="text-align:center;">ATELIER UPDATES!!</p></h1><br>
+<h2><p style="text-align:center;">All the updates you need to know will be given here ...</p></h2>
+<hr>
+
+<div class="ui three column grid">
+
+  <div class="column">
+    <div class="ui segment">
+      <img class="ui large  image" src="{% static 'explore/home/photo.jpg' %}">
+
+      <div class="content">
+        <p class="header" style="text-align:center;"><b>PHOTOGRAPHER NEEDED.</b></p>
+        <div class="meta">
+          <a class="description" style="color:black;">For the clutural event coming up next week a photographer is needed .Contact Arron:98765****</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="ui segment">
+      <img class="ui large  image" src="{% static 'explore/home/shop.jpg' %}">
+
+      <div class="content">
+        <p class="header" style="text-align:center;"><b>SHOPPING!!</b></p>
+        <div class="meta">
+          <a class="description" style="color:black;">Shop at on our website to get most asthetic and amazing creations by various artists.... Show some love</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="ui segment">
+      <img class="ui large image" src="{% static 'explore/home/talenthunt.jpg' %}">
+
+      <div class="content">
+        <p class="header" style="text-align:center;"><b>Talent Hunt!!!</b></p>
+        <div class="meta">
+          <a style="color:black;" class="description">Talent hunt competion coming soon ....Dont forget to register and win exciting prizes !!!!
+
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock content %}
+
+{% block scripts %}
+
+<script>
+{% comment %} $(document).ready(function(){
+    console.log('working')
+}) {% endcomment %}
+
+document.addEventListener('DOMContentLoaded',function(event){
+  // array with texts to type in typewriter
+  var dataText = [ "Welcome to Ateleir.", "Atelier updates!!", ];
+
+  // type one text in the typwriter
+  // keeps calling itself until the text is finished
+  function typeWriter(text, i, fnCallback) {
+    // chekc if text isn't finished yet
+    if (i < (text.length)) {
+      // add next character to h1
+     document.querySelector("h1").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
+
+      // wait for a while and call this function again for next character
+      setTimeout(function() {
+        typeWriter(text, i + 1, fnCallback)
+      }, 100);
+    }
+    // text finished, call callback if there is a callback function
+    else if (typeof fnCallback == 'function') {
+      // call callback after timeout
+      setTimeout(fnCallback, 700);
+    }
+  }
+  // start a typewriter animation for a text in the dataText array
+   function StartTextAnimation(i) {
+     if (typeof dataText[i] == 'undefined'){
+        setTimeout(function() {
+          StartTextAnimation(0);
+        }, 20000);
+     }
+     // check if dataText[i] exists
+    if (i < dataText[i].length) {
+      // text exists! start typewriter animation
+     typeWriter(dataText[i], 0, function(){
+       // after callback (and whole text has been animated), start next text
+       StartTextAnimation(i + 1);
+     });
+    }
+  }
+  // start the text animation
+  StartTextAnimation(0);
+});
+
+</script>
+
+{% endblock scripts %}
